@@ -1,4 +1,4 @@
-<link href="catalog/view/theme/default/stylesheet/rozetka_ec.css" rel="stylesheet" type="text/css" />
+<link href="catalog/view/theme/default/stylesheet/rozetka_ec.css?v=1.0.2" rel="stylesheet" type="text/css" />
 <script>	
 	let button_rozetka_pay = '<?php echo str_replace(array("\n", "\r"), '', $button_rozetka_pay); ?>';
 	
