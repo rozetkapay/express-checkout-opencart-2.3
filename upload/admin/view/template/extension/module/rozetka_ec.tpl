@@ -130,6 +130,20 @@
 						  </select>
 						</div>
 					</div>
+					<div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-post-pay"><?php echo $entry_post_pay; ?></label>
+                        <div class="col-sm-10">
+                          <select name="rozetka_ec_order_post_pay_status_id" id="input-post-pay" class="form-control">
+							<?php foreach ($order_statuses as $order_status) { ?>
+							<?php if ($order_status['order_status_id'] == $rozetka_ec_order_post_pay_status_id) { ?>
+                            <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
+                            <?php } else { ?>
+                            <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
+                            <?php } ?>
+							<?php } ?>
+                          </select>
+                        </div>
+                    </div>
 				</div>
 				<div class="tab-pane" id="tab-added">
 					<div class="panel panel-default">
@@ -244,20 +258,6 @@
 				<div class="tab-pane" id="tab-design">
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-4 control-label" for="input-button-variant"><?php echo $entry_button_variant; ?></label>
-						<div class="col-sm-8">
-							<select name="rozetka_ec_button_variant" id="input-button-variant" class="form-control">
-								<?php foreach($variants as $key => $variant) { ?>
-								<?php if ($rozetka_ec_button_variant == $key) { ?>
-								<option value="<?php echo $key; ?>" selected="selected"><?php echo $variant; ?></option>
-								<?php } else { ?>
-								<option value="<?php echo $key; ?>"><?php echo $variant; ?></option>
-								<?php } ?>
-								<?php } ?>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
 						<label class="col-sm-4 control-label" for="input-button-color"><?php echo $entry_color_button; ?></label>
 						<div class="col-sm-8">
 							<select name="rozetka_ec_button_color" id="input-button-color" class="form-control">
@@ -279,7 +279,7 @@
 					<div class="demo-button">
 						<button class="btn btn-success btn-rozetka">
 							<span><?php echo $text_buy_rpay; ?></span> 
-							<img src="view/image/payment/rozetka_ec/rozetka_ec_logo_<?php echo $rozetka_ec_button_variant ? $rozetka_ec_button_variant : 'variant_1'; ?>_white.svg" class="img-responsive" alt="<?php echo $text_buy_rpay; ?>" />
+							<img src="view/image/payment/rozetka_ec/rozetka_ec_logo_variant_2_white.svg" class="img-responsive" alt="<?php echo $text_buy_rpay; ?>" />
 						</button>
 					</div>
 				</div>
@@ -316,22 +316,21 @@
   <script>
 	$('#language a:first').tab('show');
 	
-	$('#input-button-color, #input-button-variant').on('change', function() {
+	$('#input-button-color').on('change', function() {
 		setButton();		
 	});
 	
 	function setButton() {
 		let color = $('#input-button-color').val();
-		let variant = $('#input-button-variant').val();
 		
 		if(color == 'white') {
 			$('.btn-rozetka, .demo-button').addClass('white');
 			
-			$('.btn-rozetka img').attr('src', 'view/image/payment/rozetka_ec/rozetka_ec_logo_' + variant + '_black.svg');
+			$('.btn-rozetka img').attr('src', 'view/image/payment/rozetka_ec/rozetka_ec_logo_variant_2_black.svg');
 		} else {
 			$('.btn-rozetka, .demo-button').removeClass('white');
 			
-			$('.btn-rozetka img').attr('src', 'view/image/payment/rozetka_ec/rozetka_ec_logo_' + variant + '_white.svg');
+			$('.btn-rozetka img').attr('src', 'view/image/payment/rozetka_ec/rozetka_ec_logo_variant_2_white.svg');
 		}
 	}
 	
